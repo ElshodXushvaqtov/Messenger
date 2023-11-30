@@ -11,6 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavGraph
+import androidx.navigation.Navigation
+import androidx.navigation.compose.rememberNavController
+import com.example.messenger.navigation.NavigationController
 import com.example.messenger.ui.theme.MessengerTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,7 +27,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting()
+                    val navController = rememberNavController()
+                    NavigationController(navController = navController)
                 }
             }
         }
@@ -34,7 +39,6 @@ class MainActivity : ComponentActivity() {
 fun Greeting() {
 
 }
-
 
 
 @Preview(showBackground = true)
