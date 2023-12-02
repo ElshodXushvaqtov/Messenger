@@ -6,4 +6,6 @@ sealed class Screens(var title: String, var route: String) {
 
     object Splash : Screens("Splash", "splash")
 
+    object Chats : Screens("Chats","chats")
+
 }

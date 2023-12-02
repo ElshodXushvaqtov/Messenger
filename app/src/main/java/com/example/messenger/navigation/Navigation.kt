@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.messenger.screens.ChatScreen
 import com.example.messenger.screens.HomeScreen
 import com.example.messenger.screens.SplashScreen
 
@@ -19,8 +20,14 @@ fun NavigationController(navController: NavHostController) {
         }
         composable(Screens.Home.route) {
 
-            HomeScreen()
+            HomeScreen(navController)
 
+        }
+        
+        composable(Screens.Chats.route){
+            
+            ChatScreen(navController)
+            
         }
     }
 
