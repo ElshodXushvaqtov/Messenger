@@ -41,27 +41,27 @@ data class Person(
 val personList = listOf(
     Person(
         1,
-        "Pranav",
+        "Elon Musk",
         R.drawable.person_1
     ),
     Person(
         2,
-        "Ayesha",
+        "Mark Zuckerberg",
         R.drawable.person_2
     ),
     Person(
         3,
-        "Roshini",
+        "Cristiano Ronaldo",
         R.drawable.person_3
     ),
     Person(
         4,
-        "Kaushik",
+        "Leo Messi",
         R.drawable.person_4
     ),
     Person(
         5,
-        "Dad",
+        "Donald Trump",
         R.drawable.person_5
     )
 )

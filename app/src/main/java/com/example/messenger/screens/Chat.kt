@@ -38,9 +38,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.messenger.R
 import com.example.messenger.module.Chat
 import com.example.messenger.module.IconComponentDrawable
@@ -242,5 +244,13 @@ fun UserNameRow(
         }
         IconComponentImageVector(icon = Icons.Default.MoreVert, size = 24.dp, tint = Color.White)
     }
+
+}
+
+@Preview
+@Composable
+private fun TestUI() {
+
+    ChatScreen(navHostController = rememberNavController())
 
 }
