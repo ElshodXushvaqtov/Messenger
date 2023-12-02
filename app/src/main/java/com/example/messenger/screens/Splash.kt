@@ -31,7 +31,7 @@ fun SplashScreen(navController: NavHostController) {
         LottieAnimation(composition = animation)
         LaunchedEffect(key1 = true) {
 
-        delay(4750L)
+        delay(5200L)
         navController.navigate("home")
 
     }
