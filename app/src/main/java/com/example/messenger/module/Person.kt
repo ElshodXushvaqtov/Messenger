@@ -46,12 +46,12 @@ val personList = listOf(
     ),
     Person(
         2,
-        "Mark Zuckerberg",
+        "Zuckerberg",
         R.drawable.person_2
     ),
     Person(
         3,
-        "Cristiano Ronaldo",
+        "Cristiano",
         R.drawable.person_3
     ),
     Person(

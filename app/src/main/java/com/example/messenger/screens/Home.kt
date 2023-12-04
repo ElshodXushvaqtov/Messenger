@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -28,7 +29,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
@@ -43,8 +43,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.messenger.module.IconComponentDrawable
 import com.example.messenger.module.IconComponentImageVector
 import com.example.messenger.module.Person
-import com.example.messenger.module.SpacerHeight
-import com.example.messenger.module.SpacerWidth
 import com.example.messenger.module.personList
 
 
@@ -64,7 +62,7 @@ fun HomeScreen(
                 .fillMaxSize()
                 .padding(top = 30.dp)
         ) {
-            HeaderOrViewStory()
+            Header_Stories()
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -74,11 +72,6 @@ fun HomeScreen(
                         )
                     )
             ) {
-                BottomSheetSwipeUp(
-                    modifier = Modifier
-                        .align(Alignment.TopCenter)
-                        .padding(top = 15.dp)
-                )
                 LazyColumn(
                     modifier = Modifier.padding(bottom = 15.dp, top = 30.dp)
                 ) {
@@ -100,48 +93,29 @@ fun HomeScreen(
 }
 
 @Composable
-fun HeaderOrViewStory() {
+fun Header_Stories() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 20.dp, top = 20.dp)
     ) {
         Header()
-        ViewStoryLayout()
+        StoryRecycler()
     }
 }
 
 @Composable
-fun ViewStoryLayout() {
+fun StoryRecycler() {
     LazyRow(modifier = Modifier.padding(vertical = 20.dp)) {
         item {
-            AddStoryLayout()
-            SpacerWidth()
+            AddStory()
+            Spacer(modifier = Modifier.width(10.dp))
         }
         items(personList, key = { it.id }) {
             UserStory(person = it)
         }
     }
 }
-
-
-@Composable
-fun BottomSheetSwipeUp(
-    modifier: Modifier
-) {
-
-    Box(
-        modifier = modifier
-            .background(
-                Color(0XFFE5E6E9),
-                RoundedCornerShape(90.dp)
-            )
-            .width(90.dp)
-            .height(5.dp)
-
-    )
-}
-
 
 @Composable
 fun UserEachRow(
@@ -153,8 +127,9 @@ fun UserEachRow(
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White)
+            .padding(horizontal = 20.dp, vertical = 5.dp)
             .noRippleEffect { onClick() }
-            .padding(horizontal = 20.dp, vertical = 5.dp),
+
     ) {
         Column {
             Row(
@@ -163,7 +138,7 @@ fun UserEachRow(
             ) {
                 Row {
                     IconComponentDrawable(icon = person.icon, size = 60.dp)
-                    SpacerWidth()
+                    Spacer(modifier = Modifier.width(10.dp))
                     Column {
                         person.name?.let {
                             Text(
@@ -174,7 +149,7 @@ fun UserEachRow(
                                 )
                             )
                         }
-                        SpacerHeight(5.dp)
+                        Spacer(modifier = Modifier.height(5.dp))
                         Text(
                             text = "Okay",
                             style = TextStyle(
@@ -190,7 +165,7 @@ fun UserEachRow(
                     )
                 )
             }
-            SpacerHeight(15.dp)
+            Spacer(modifier = Modifier.height(15.dp))
             Divider(modifier = Modifier.fillMaxWidth(), thickness = 1.dp, color = Color(0XFFEFF0F1))
         }
     }
@@ -206,14 +181,14 @@ fun UserStory(
     ) {
         Box(
             modifier = Modifier
-                .border(1.dp, Color.Yellow, CircleShape)
-                .background(Color.Yellow, shape = CircleShape)
+                .border(1.dp, Color.Red, CircleShape)
+                .background(Color.Black, shape = CircleShape)
                 .size(70.dp),
             contentAlignment = Alignment.Center,
         ) {
             IconComponentDrawable(icon = person.icon, size = 65.dp)
         }
-        SpacerHeight(8.dp)
+        Spacer(modifier = Modifier.height(8.dp))
         person.name?.let {
             Text(
                 text = it, style = TextStyle(
@@ -227,7 +202,7 @@ fun UserStory(
 
 
 @Composable
-fun AddStoryLayout(
+fun AddStory(
     modifier: Modifier = Modifier
 ) {
 
@@ -255,7 +230,7 @@ fun AddStoryLayout(
                 )
             }
         }
-        SpacerHeight(8.dp)
+        Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = "Add Story", style = TextStyle(
                 color = Color.White, fontSize = 13.sp,
@@ -277,7 +252,7 @@ fun Header() {
                 fontWeight = FontWeight.W300
             )
         ) {
-            append("Welcome Back")
+            append("Welcome Back, ")
         }
         withStyle(
             style = SpanStyle(
@@ -286,7 +261,7 @@ fun Header() {
                 fontSize = 20.sp,
             )
         ) {
-            append("Jayant!")
+            append("Elshodbek")
         }
     }
 
@@ -309,6 +284,6 @@ fun Modifier.noRippleEffect(onClick: () -> Unit) = composed {
 @Composable
 private fun TestUI() {
 
-        ChatScreen(navHostController = rememberNavController())
+    HomeScreen(navHostController = rememberNavController())
 
 }

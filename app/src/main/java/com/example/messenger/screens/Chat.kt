@@ -7,10 +7,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -48,7 +50,6 @@ import com.example.messenger.module.Chat
 import com.example.messenger.module.IconComponentDrawable
 import com.example.messenger.module.IconComponentImageVector
 import com.example.messenger.module.Person
-import com.example.messenger.module.SpacerWidth
 import com.example.messenger.module.chatList
 
 @Composable
@@ -223,7 +224,7 @@ fun UserNameRow(
         Row {
 
             IconComponentDrawable(icon = person.icon, size = 42.dp)
-            SpacerWidth()
+            Spacer(modifier = Modifier.width(10.dp))
             Column {
                 person.name?.let {
                     Text(
