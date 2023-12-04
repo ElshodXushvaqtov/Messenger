@@ -43,6 +43,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.messenger.module.IconComponentDrawable
 import com.example.messenger.module.IconComponentImageVector
 import com.example.messenger.module.Person
+import com.example.messenger.module.SearchBar
 import com.example.messenger.module.personList
 
 
@@ -50,7 +51,6 @@ import com.example.messenger.module.personList
 fun HomeScreen(
     navHostController: NavHostController
 ) {
-
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -70,13 +70,14 @@ fun HomeScreen(
                         Color.White, RoundedCornerShape(
                             topStart = 30.dp, topEnd = 30.dp
                         )
-                    )
+                    ),
             ) {
+                SearchBar(onSearch = {})
                 LazyColumn(
-                    modifier = Modifier.padding(bottom = 15.dp, top = 30.dp)
+                    modifier = Modifier.padding(top = 90.dp)
                 ) {
                     items(personList, key = { it.id }) {
-                        UserEachRow(person = it) {
+                        Chats(person = it) {
                             navHostController.currentBackStackEntry?.savedStateHandle?.set(
                                 "data",
                                 it
@@ -118,7 +119,7 @@ fun StoryRecycler() {
 }
 
 @Composable
-fun UserEachRow(
+fun Chats(
     person: Person,
     onClick: () -> Unit
 ) {
@@ -131,6 +132,7 @@ fun UserEachRow(
             .noRippleEffect { onClick() }
 
     ) {
+
         Column {
             Row(
                 modifier = Modifier.fillMaxWidth(),
